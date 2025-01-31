@@ -41,7 +41,10 @@ function App() {
 
 
   const fetchData  = React.useCallback(() => {
-      if(!term) return;
+      if(!term) {
+        dispatchInfo({type: 'LOADING'})
+        return
+      };
       dispatchInfo({type: 'LOADING'})
       fetch(`https://restcountries.com/v3.1/name/${term}`)
         .then(res => {
