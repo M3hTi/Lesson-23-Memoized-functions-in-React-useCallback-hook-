@@ -68,7 +68,7 @@ function App() {
     <div className="container">
       <h1>REST Countries</h1>
       <div className="search-container">
-        <InputWithLabelAndButton id="search" typ="text" value={term} onHandler={handlerInput}>
+        <InputWithLabelAndButton id="search" typ="text" value={term} onHandler={handlerInput} onFetch={fetchData}>
           Search Country:
         </InputWithLabelAndButton>
       </div>
@@ -85,7 +85,7 @@ function App() {
 }
 
 
-function InputWithLabelAndButton({id,type,value,onHandler, children}){
+function InputWithLabelAndButton({id,type,value,onHandler,onFetch, children}){
   const inputRef = React.useRef(null)
 
   React.useEffect(() => {
@@ -100,7 +100,7 @@ function InputWithLabelAndButton({id,type,value,onHandler, children}){
       <label htmlFor={id}>{children}</label>
       &nbsp;
       <input type={type} id={id} ref={inputRef} value={value} onInput={onHandler} />
-      <button>Search</button>
+      <button onClick={onFetch}>Search</button>
     </>
   )
 }
