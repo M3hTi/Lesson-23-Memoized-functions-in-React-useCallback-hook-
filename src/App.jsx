@@ -3,10 +3,11 @@ import * as React from 'react'
 import './App.css'
 
 function App() {
+  const [term, setTerm] = React.useState('')
   return (
     <>
       <h1>REST Countries</h1>
-      <InputWithLabelAndButton id="search" typ="text" >
+      <InputWithLabelAndButton id="search" typ="text" value={term} >
         Search Country:
       </InputWithLabelAndButton>
     </>
@@ -14,7 +15,7 @@ function App() {
 }
 
 
-function InputWithLabelAndButton({id,type,children}){
+function InputWithLabelAndButton({id,type,value,children}){
   const inputRef = React.useRef(null)
 
   React.useEffect(() => {
@@ -28,7 +29,7 @@ function InputWithLabelAndButton({id,type,children}){
     <>
       <label htmlFor={id}>{children}</label>
       &nbsp;
-      <input type={type} id={id} ref={inputRef} />
+      <input type={type} id={id} ref={inputRef} value={value} />
       <button>Search</button>
     </>
   )
